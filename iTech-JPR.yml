@@ -1,0 +1,33 @@
+# iTech Media Test 1
+
+- name: Load Balanced Apache Servers
+  hosts: localhost
+  connection: local
+  become: true
+  gather_facts: False
+  vars:
+    keypair: id_rsa
+    instance_type: t2.micro
+    ami_id: ami-cc7066a8
+    region: eu-west-2
+    access_key:  [insert your access key here]
+    secret_key: [insert your secret key here]
+  tasks:
+    - name: Create an Instance on AWS
+      ec2:
+         key_name: "{{ keypair }}"
+         group: default
+         instance_type: "{{ instance_type  }}"
+         image: "{{ ami_id }}"
+         wait: true
+         region: "{{ region }}"
+         aws_access_key: "{{ access_key }}"
+         aws_secret_key: "{{ secret_key }}"
+         exact_count: 3
+         count_tag:
+             name: aws-demo
+         instance_tags:
+             name: aws-demo
+      register: ec2
+    - name: Print all EC2 Variables
+      debug: var=ec2
