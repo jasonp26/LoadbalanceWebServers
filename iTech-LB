@@ -1,7 +1,19 @@
 # This is the Address to access the Webservers from the Load Balancer
 
-http://itech-lb-1898014498.eu-west-2.elb.amazonaws.com/
+# The address for the individual webservers
 
-By refreshing this link multiple times you will see that it cycles through the three different servers that are in my AWS account
+Each server is an Ubuntu 16 server.
+
+Webserver 1:  35.176.139.106
+Webserver 2:  35.176.120.69
+Webserver 3:  35.176.64.127
+
+$ http://itech-lb-1898014498.eu-west-2.elb.amazonaws.com/
+
+By refreshing this link multiple times you will see that it cycles through the three different servers that are in my AWS
+account
 
 I was not able to figure out how to do the caching part of this exercise.
+
+If i enabled the Cookie Stickiness feature on the AWS this would allow the load balancer to remain on just one server while
+you refresh it and only if the server goes down completely will it then attempt to switch to another server
