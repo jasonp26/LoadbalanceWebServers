@@ -3,3 +3,5 @@
 http://itech-lb-1898014498.eu-west-2.elb.amazonaws.com/
 
 By refreshing this link multiple times you will see that it cycles through the three different servers that are in my AWS account
+
+I was not able to figure out how to do the caching part of this exercise.
